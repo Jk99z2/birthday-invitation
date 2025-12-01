@@ -402,42 +402,28 @@
     </div>
 
     <script>
-        // Efecto de brillo en el cursor
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.9) {
-                const sparkle = document.createElement('div');
-                sparkle.style.position = 'fixed';
-                sparkle.style.left = e.clientX + 'px';
-                sparkle.style.top = e.clientY + 'px';
-                sparkle.style.pointerEvents = 'none';
-                sparkle.style.fontSize = '20px';
-                sparkle.textContent = ['✨', '⭐', '💖'][Math.floor(Math.random() * 3)];
-                sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1000);
-            }
-        });
+    // ================================
+    //  EVENTO DEL CUMPLE
+    // ================================
+    const EVENT_DATA = {
+        title: 'Cumpleaños Luan y Cris',
+        description: 'Fiesta de cumpleaños en Terraza Esmeralda',
+        location: 'Terraza Esmeralda, Emilio Brun #177, Residencial Esmeralda, Colima',
+        start: '20241217T140000', // 17 dic 2024 – 2:00 PM
+        end: '20241217T200000',   // 17 dic 2024 – 8:00 PM
+        url: 'https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9'
+    };
 
-    // Función para agregar a calendario
+    // ================================
+    //  MOSTRAR MODAL
+    // ================================
     function addToCalendar() {
-        // Detalles del evento
-        const eventDetails = {
-            title: 'Cumpleaños Luan y Cris',
-            description: 'La fiesta más iconic del año. ¡No faltes preciosx! 🎉💖',
-            location: 'Terraza Esmeralda, Emilio Brun #177, Residencial Esmeralda, Colima',
-            start: '20241217T140000', // 17 dic 2024 – 02:00 PM
-            end: '20241217T200000',   // 17 dic 2024 – 08:00 PM
-            url: 'https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9'
-        };
-
-        // Crear modal
         const modal = document.createElement('div');
+        modal.id = "calendarModal";
         modal.style.cssText = `
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0,0,0,0.7);
             display: flex;
             justify-content: center;
@@ -452,35 +438,44 @@
             border-radius: 20px;
             max-width: 400px;
             width: 90%;
+            text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeIn .2s ease-out;
         `;
 
         content.innerHTML = `
-            <h3 style="color: #ff1493; margin-bottom: 20px; text-align: center; font-size: 22px;">
+            <h3 style="color:#ff1493;font-size:22px;margin-bottom:20px;">
                 Elige tu calendario
             </h3>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
 
-                <a href="${generateGoogleCalendarUrl(eventDetails)}" 
+            <div style="display:flex;flex-direction:column;gap:12px;">
+
+                <a href="${generateGoogleCalendarUrl(EVENT_DATA)}"
                     target="_blank"
-                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                    style="background:linear-gradient(135deg,#ff1493,#ff69b4);
+                        color:white;padding:15px;border-radius:10px;
+                        text-decoration:none;font-weight:bold;">
                     📱 Google Calendar
                 </a>
 
-                <a href="${generateICalFile(eventDetails)}" 
-                    download="cumple_luan_cris.ics"
-                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                <button onclick="downloadICS(EVENT_DATA)"
+                    style="background:linear-gradient(135deg,#ff1493,#ff69b4);
+                        color:white;padding:15px;border-radius:10px;
+                        border:none;font-weight:bold;">
                     🍎 Apple Calendar / iCal
-                </a>
+                </button>
 
-                <a href="${generateOutlookUrl(eventDetails)}" 
+                <a href="${generateOutlookUrl(EVENT_DATA)}"
                     target="_blank"
-                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                    style="background:linear-gradient(135deg,#ff1493,#ff69b4);
+                        color:white;padding:15px;border-radius:10px;
+                        text-decoration:none;font-weight:bold;">
                     📧 Outlook.com
                 </a>
 
-                <button onclick="this.parentElement.parentElement.parentElement.remove()"
-                    style="background:#ddd;color:#555;padding:15px;border-radius:10px;border:none;font-weight:bold;">
+                <button onclick="closeCalendarModal()"
+                    style="background:#ddd;color:#555;padding:15px;
+                        border-radius:10px;border:none;font-weight:bold;">
                     Cancelar
                 </button>
             </div>
@@ -490,13 +485,18 @@
         document.body.appendChild(modal);
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.remove();
+            if (e.target === modal) closeCalendarModal();
         });
     }
 
-    /* -------------------------------
-    GOOGLE CALENDAR LINK
-    --------------------------------*/
+    function closeCalendarModal() {
+        const modal = document.getElementById("calendarModal");
+        if (modal) modal.remove();
+    }
+
+    // ================================
+    //  GOOGLE CALENDAR
+    // ================================
     function generateGoogleCalendarUrl(event) {
         const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
         const params = new URLSearchParams({
@@ -508,9 +508,9 @@
         return `${baseUrl}&${params.toString()}`;
     }
 
-    /* -------------------------------
-    OUTLOOK CALENDAR LINK
-    --------------------------------*/
+    // ================================
+    //  OUTLOOK
+    // ================================
     function generateOutlookUrl(event) {
         const baseUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose';
         const params = new URLSearchParams({
@@ -532,12 +532,13 @@
         return `${y}-${m}-${d}T${h}:${min}:00`;
     }
 
-    /* -------------------------------
-    iCAL (Apple / Android etc.)
-    --------------------------------*/
-    function generateICalFile(event) {
-        const icsContent =
-    `BEGIN:VCALENDAR
+    // ================================
+    //  APPLE CAL + ANDROID (ICS BLOB)
+    //  *FUNCIONA EN iPHONE*
+    // ================================
+    function downloadICS(event) {
+        const icsContent = `
+    BEGIN:VCALENDAR
     VERSION:2.0
     BEGIN:VEVENT
     SUMMARY:${event.title}
@@ -548,9 +549,16 @@
     END:VEVENT
     END:VCALENDAR`;
 
-        return "data:text/calendar;charset=utf8," + encodeURIComponent(icsContent);
+        const blob = new Blob([icsContent], { type: "text/calendar" });
+        const url = URL.createObjectURL(blob);
+
+        // Safari / iPhone lo abrirá como archivo calendario
+        window.location.href = url;
+
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
     }
     </script>
+
 
 </body>
 </html>
