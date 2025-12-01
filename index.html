@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luan y Cris Birthday 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fef6fb;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            animation: sparkleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .disco-ball {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: 
+                linear-gradient(45deg, #ddd 25%, transparent 25%),
+                linear-gradient(-45deg, #ddd 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ddd 75%),
+                linear-gradient(-45deg, transparent 75%, #ddd 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 0 30px rgba(0,0,0,0.3),
+                0 0 40px rgba(255,255,255,0.5);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .disco-left {
+            top: 50px;
+            left: 30px;
+        }
+
+        .disco-right {
+            bottom: 100px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.2);
+            position: relative;
+        }
+
+        .header {
+            background: white;
+            padding: 40px 30px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-family: 'Righteous', cursive;
+            font-size: 48px;
+            color: #ff69b4;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 #ffb6d9;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-family: 'Righteous', cursive;
+            font-size: 36px;
+            color: #ff1493;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .photo-section {
+            padding: 20px;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crown-left, .crown-right {
+            position: absolute;
+            font-size: 50px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .crown-left {
+            top: -20px;
+            left: 20px;
+        }
+
+        .crown-right {
+            top: -20px;
+            right: 20px;
+        }
+
+        .decorations {
+            position: absolute;
+            font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        .deco-1 { top: 20px; left: 20px; }
+        .deco-2 { top: 50px; right: 20px; }
+        .deco-3 { bottom: 150px; left: 30px; }
+        .deco-4 { bottom: 200px; right: 40px; }
+
+        .info-section {
+            background: white;
+            padding: 30px;
+        }
+
+        .info-box {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff0f8 0%, #ffe0f0 100%);
+            border-radius: 15px;
+            border: 3px solid #ff69b4;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #ff1493;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .location-value {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .buttons-section {
+            padding: 20px 30px;
+            background: white;
+            text-align: center;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+        }
+
+        .qr-section {
+            padding: 30px;
+            background: white;
+            text-align: center;
+            border-top: 3px dashed #ff69b4;
+        }
+
+        .qr-title {
+            font-weight: bold;
+            color: #ff1493;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .qr-box {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            background: white;
+            border: 4px solid #ff69b4;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.2);
+            padding: 15px;
+            font-size: 12px;
+            color: #ff69b4;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .emoji-decoration {
+            font-size: 30px;
+            display: inline-block;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 28px;
+            }
+
+            .disco-ball {
+                width: 80px;
+                height: 80px;
+            }
+
+            .disco-right {
+                width: 70px;
+                height: 70px;
+            }
+
+            .decorations {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bolas disco -->
+    <div class="disco-ball disco-left"></div>
+    <div class="disco-ball disco-right"></div>
+
+    <!-- Estrellas flotantes -->
+    <div class="sparkle" style="top: 100px; left: 15%; font-size: 20px;">✨</div>
+    <div class="sparkle" style="top: 200px; right: 20%; font-size: 15px; animation-delay: 0.5s;">⭐</div>
+    <div class="sparkle" style="top: 400px; left: 25%; font-size: 18px; animation-delay: 1s;">✨</div>
+    <div class="sparkle" style="bottom: 200px; right: 15%; font-size: 16px; animation-delay: 1.5s;">⭐</div>
+    <div class="sparkle" style="top: 300px; left: 80%; font-size: 20px; animation-delay: 0.8s;">✨</div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="decorations deco-1">🌸</div>
+            <div class="decorations deco-2">⭐</div>
+            <div class="title">Luan y Cris</div>
+            <div class="subtitle">Birthday</div>
+        </div>
+
+        <!-- Sección de foto -->
+        <div class="photo-section">
+            <div class="decorations deco-3">🍰</div>
+            <div class="decorations deco-4">🍹</div>
+            
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <div class="crown-left">👑</div>
+                    <div class="crown-right">👑</div>
+                    <br><img src="image.png" style="width:100%; height:100%; object-fit:contain;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Información -->
+        <div class="info-section">
+            <div class="info-box">
+                <div class="info-label">📅 Fecha</div>
+                <div class="info-value">17 de Diciembre</div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-label">🕐 Hora</div>
+                <div class="info-value">02:00 p.m.</div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-label">📍 Lugar</div>
+                <div class="info-value location-value">
+                    "Terraza Esmeralda"<br>
+                    Emilio Brun #177<br>
+                    Residencial Esmeralda Colima, Col.
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="buttons-section">
+            <a href="https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9" 
+               class="map-button" 
+               target="_blank">
+               📍 Ver Ubicación
+            </a>
+            <a onclick="addToCalendar()"
+            class="map-button"
+            style="cursor:pointer;">
+            📅 Agregar al Calendario
+            </a>
+
+        </div>
+
+        <!-- QR Code -->
+        <div class="qr-section">
+            <div class="qr-title">🔲 Escanea el QR</div>
+            <div class="qr-box">
+                <br>
+                <img src="qr.png" style="width:100%; height:100%; object-fit:contain;">
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">
+                <span class="emoji-decoration">🎉</span>
+                ¡Te Esperamos!
+                <span class="emoji-decoration">💖</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efecto de brillo en el cursor
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.fontSize = '20px';
+                sparkle.textContent = ['✨', '⭐', '💖'][Math.floor(Math.random() * 3)];
+                sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+    // Función para agregar a calendario
+    function addToCalendar() {
+        // Detalles del evento
+        const eventDetails = {
+            title: 'Cumpleaños Luan y Cris',
+            description: 'La fiesta más iconic del año. ¡No faltes preciosx! 🎉💖',
+            location: 'Terraza Esmeralda, Emilio Brun #177, Residencial Esmeralda, Colima',
+            start: '20241217T140000', // 17 dic 2024 – 02:00 PM
+            end: '20241217T200000',   // 17 dic 2024 – 08:00 PM
+            url: 'https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9'
+        };
+
+        // Crear modal
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        `;
+
+        const content = document.createElement('div');
+        content.style.cssText = `
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        `;
+
+        content.innerHTML = `
+            <h3 style="color: #ff1493; margin-bottom: 20px; text-align: center; font-size: 22px;">
+                Elige tu calendario
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+
+                <a href="${generateGoogleCalendarUrl(eventDetails)}" 
+                    target="_blank"
+                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                    📱 Google Calendar
+                </a>
+
+                <a href="${generateICalFile(eventDetails)}" 
+                    download="cumple_luan_cris.ics"
+                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                    🍎 Apple Calendar / iCal
+                </a>
+
+                <a href="${generateOutlookUrl(eventDetails)}" 
+                    target="_blank"
+                    style="background: linear-gradient(135deg,#ff1493,#ff69b4);color:white;padding:15px;border-radius:10px;text-decoration:none;text-align:center;font-weight:bold;">
+                    📧 Outlook.com
+                </a>
+
+                <button onclick="this.parentElement.parentElement.parentElement.remove()"
+                    style="background:#ddd;color:#555;padding:15px;border-radius:10px;border:none;font-weight:bold;">
+                    Cancelar
+                </button>
+            </div>
+        `;
+
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
+    }
+
+    /* -------------------------------
+    GOOGLE CALENDAR LINK
+    --------------------------------*/
+    function generateGoogleCalendarUrl(event) {
+        const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+        const params = new URLSearchParams({
+            text: event.title,
+            details: event.description,
+            location: event.location,
+            dates: `${event.start}/${event.end}`
+        });
+        return `${baseUrl}&${params.toString()}`;
+    }
+
+    /* -------------------------------
+    OUTLOOK CALENDAR LINK
+    --------------------------------*/
+    function generateOutlookUrl(event) {
+        const baseUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose';
+        const params = new URLSearchParams({
+            subject: event.title,
+            body: event.description,
+            location: event.location,
+            startdt: formatOutlookDate(event.start),
+            enddt: formatOutlookDate(event.end)
+        });
+        return `${baseUrl}&${params.toString()}`;
+    }
+
+    function formatOutlookDate(dateStr) {
+        const y = dateStr.substring(0,4);
+        const m = dateStr.substring(4,6);
+        const d = dateStr.substring(6,8);
+        const h = dateStr.substring(9,11);
+        const min = dateStr.substring(11,13);
+        return `${y}-${m}-${d}T${h}:${min}:00`;
+    }
+
+    /* -------------------------------
+    iCAL (Apple / Android etc.)
+    --------------------------------*/
+    function generateICalFile(event) {
+        const icsContent =
+    `BEGIN:VCALENDAR
+    VERSION:2.0
+    BEGIN:VEVENT
+    SUMMARY:${event.title}
+    DESCRIPTION:${event.description}
+    LOCATION:${event.location}
+    DTSTART:${event.start}
+    DTEND:${event.end}
+    END:VEVENT
+    END:VCALENDAR`;
+
+        return "data:text/calendar;charset=utf8," + encodeURIComponent(icsContent);
+    }
+    </script>
+
+</body>
+</html>
