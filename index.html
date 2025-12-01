@@ -530,13 +530,12 @@
             createParticles(e.clientX, e.clientY);
         });
 
-        // Eventos táctiles (móvil)
-        document.addEventListener('touchmove', (e) => {
-            e.preventDefault();
+        // Eventos táctiles (móvil) - solo en canvas
+        canvas.addEventListener('touchmove', (e) => {
             for (let touch of e.touches) {
                 createParticles(touch.clientX, touch.clientY);
             }
-        }, { passive: false });
+        });
 
         // Click/Tap efectos
         function createBurst(x, y) {
