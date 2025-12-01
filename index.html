@@ -537,23 +537,33 @@
     //  *FUNCIONA EN iPHONE*
     // ================================
     function downloadICS(event) {
-        const icsContent = `
-    BEGIN:VCALENDAR
-    VERSION:2.0
-    BEGIN:VEVENT
-    SUMMARY:${event.title}
-    DESCRIPTION:${event.description}
-    LOCATION:${event.location}
-    DTSTART:${event.start}
-    DTEND:${event.end}
-    END:VEVENT
-    END:VCALENDAR`;
+        const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Birthday Invitation//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${Date.now()}@birthday-luan-cris
+DTSTAMP:${event.start}
+DTSTART:${event.start}
+DTEND:${event.end}
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}
+LOCATION:${event.location}
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR`.replace(/\n/g, '\r\n');
 
-        const blob = new Blob([icsContent], { type: "text/calendar" });
+        const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
         const url = URL.createObjectURL(blob);
-
-        // Safari / iPhone lo abrirá como archivo calendario
-        window.location.href = url;
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'cumple-luan-cris.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
         setTimeout(() => URL.revokeObjectURL(url), 2000);
     }
