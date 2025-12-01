@@ -375,19 +375,7 @@
             <div class="decorations deco-2">⭐</div>
             <div class="title">Luan y Cris</div>
             <div class="subtitle">Birthday</div>
-            <button onclick="playMusic()" 
-                style="
-                    background: linear-gradient(135deg, #ff69b4, #ff1493);
-                    color: white;
-                    border: none;
-                    border-radius: 12px;
-                    font-size: 16px;
-                    font-weight: bold;
-                    align-items: center;
-                    cursor: pointer;
-                ">
-                🎶 Reproducir música
-            </button>
+            <button id="play-music">Reproducir música</button>
 
         </div>
 
@@ -773,18 +761,19 @@ END:VCALENDAR`.replace(/\n/g, '\r\n');
             setTimeout(() => URL.revokeObjectURL(url), 2000);
         }
 
-    function playMusic() {
-        const music = document.getElementById('bg-music');
-        music.volume = 0.7; // volumen inicial
-        music.play().catch(err => {
-            console.log("iPhone requiere interacción del usuario:", err);
-        });
-    }
+document.getElementById("play-music").addEventListener("click", () => {
+    const music = document.getElementById("bg-music");
+    music.volume = 0.8;
+
+    music.play()
+    .then(() => console.log("Reproduciendo..."))
+    .catch(err => console.log("Safari bloqueó el audio:", err));
+});
+
     </script>
 
-<audio id="bg-music" loop>
-    <source src="bday.mp3" type="audio/mpeg">
-</audio>
+<audio id="bg-music" src="bday.mp3" type="audio/mpeg"></audio>
+
 </body>
 
 </html>
