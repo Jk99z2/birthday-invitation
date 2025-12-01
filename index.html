@@ -375,6 +375,20 @@
             <div class="decorations deco-2">⭐</div>
             <div class="title">Luan y Cris</div>
             <div class="subtitle">Birthday</div>
+            <button onclick="playMusic()" 
+                style="
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    border: none;
+                    border-radius: 12px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    align-items: center;
+                    cursor: pointer;
+                ">
+                🎶 Reproducir música
+            </button>
+
         </div>
 
         <!-- Sección de foto -->
@@ -758,9 +772,19 @@ END:VCALENDAR`.replace(/\n/g, '\r\n');
 
             setTimeout(() => URL.revokeObjectURL(url), 2000);
         }
+
+    function playMusic() {
+        const music = document.getElementById('bg-music');
+        music.volume = 0.7; // volumen inicial
+        music.play().catch(err => {
+            console.log("iPhone requiere interacción del usuario:", err);
+        });
+    }
     </script>
 
-
+<audio id="bg-music" loop>
+    <source src="bday.mp3" type="audio/mpeg">
+</audio>
 </body>
 
 </html>
