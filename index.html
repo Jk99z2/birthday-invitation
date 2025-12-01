@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,15 +30,24 @@
         }
 
         @keyframes sparkleFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
         }
 
         .disco-ball {
             position: absolute;
             width: 120px;
             height: 120px;
-            background: 
+            background:
                 linear-gradient(45deg, #ddd 25%, transparent 25%),
                 linear-gradient(-45deg, #ddd 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, #ddd 75%),
@@ -45,15 +55,20 @@
             background-size: 20px 20px;
             background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
             border-radius: 50%;
-            box-shadow: 
-                inset 0 0 30px rgba(0,0,0,0.3),
-                0 0 40px rgba(255,255,255,0.5);
+            box-shadow:
+                inset 0 0 30px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(255, 255, 255, 0.5);
             animation: rotate 4s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .disco-left {
@@ -113,7 +128,7 @@
         .photo-frame {
             background: white;
             padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transform: rotate(-1deg);
             margin: 0 auto;
             max-width: 400px;
@@ -134,10 +149,11 @@
             overflow: hidden;
         }
 
-        .crown-left, .crown-right {
+        .crown-left,
+        .crown-right {
             position: absolute;
             font-size: 50px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
         }
 
         .crown-left {
@@ -157,14 +173,36 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(10deg);
+            }
         }
 
-        .deco-1 { top: 20px; left: 20px; }
-        .deco-2 { top: 50px; right: 20px; }
-        .deco-3 { bottom: 150px; left: 30px; }
-        .deco-4 { bottom: 200px; right: 40px; }
+        .deco-1 {
+            top: 20px;
+            left: 20px;
+        }
+
+        .deco-2 {
+            top: 50px;
+            right: 20px;
+        }
+
+        .deco-3 {
+            bottom: 150px;
+            left: 30px;
+        }
+
+        .deco-4 {
+            bottom: 200px;
+            right: 40px;
+        }
 
         .info-section {
             background: white;
@@ -271,7 +309,7 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .emoji-decoration {
@@ -281,8 +319,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         @media (max-width: 600px) {
@@ -310,6 +355,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Bolas disco -->
     <div class="disco-ball disco-left"></div>
@@ -335,7 +381,7 @@
         <div class="photo-section">
             <div class="decorations deco-3">🍰</div>
             <div class="decorations deco-4">🍹</div>
-            
+
             <div class="photo-frame">
                 <div class="photo-placeholder">
                     <div class="crown-left">👑</div>
@@ -369,15 +415,11 @@
 
         <!-- Botones -->
         <div class="buttons-section">
-            <a href="https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9" 
-               class="map-button" 
-               target="_blank">
-               📍 Ver Ubicación
+            <a href="https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9" class="map-button" target="_blank">
+                📍 Ver Ubicación
             </a>
-            <a onclick="addToCalendar()"
-            class="map-button"
-            style="cursor:pointer;">
-            📅 Agregar al Calendario
+            <a onclick="addToCalendar()" class="map-button" style="cursor:pointer;">
+                📅 Agregar al Calendario
             </a>
 
         </div>
@@ -402,25 +444,175 @@
     </div>
 
     <script>
-    // ================================
-    //  EVENTO DEL CUMPLE
-    // ================================
-    const EVENT_DATA = {
-        title: 'Cumpleaños Luan y Cris',
-        description: 'Fiesta de cumpleaños en Terraza Esmeralda',
-        location: 'Terraza Esmeralda, Emilio Brun #177, Residencial Esmeralda, Colima',
-        start: '20241217T140000', // 17 dic 2024 – 2:00 PM
-        end: '20241217T200000',   // 17 dic 2024 – 8:00 PM
-        url: 'https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9'
-    };
+        // ================================
+        //  PARTÍCULAS DEL CURSOR
+        // ================================
+        const colors = ['#ff1493', '#ff69b4', '#ffb6d9', '#ffd700', '#ff6347'];
+        let particles = [];
 
-    // ================================
-    //  MOSTRAR MODAL
-    // ================================
-    function addToCalendar() {
-        const modal = document.createElement('div');
-        modal.id = "calendarModal";
-        modal.style.cssText = `
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 8 + 4;
+                this.speedX = (Math.random() - 0.5) * 3;
+                this.speedY = (Math.random() - 0.5) * 3;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.life = 100;
+                this.shape = Math.random() > 0.5 ? 'circle' : 'star';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.speedY += 0.1; // gravedad
+                this.life -= 2;
+                this.size *= 0.97;
+            }
+
+            draw(ctx) {
+                ctx.globalAlpha = this.life / 100;
+                ctx.fillStyle = this.color;
+
+                if (this.shape === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    // estrella
+                    ctx.font = `${this.size * 2}px Arial`;
+                    ctx.fillText('✨', this.x - this.size, this.y + this.size);
+                }
+            }
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9998;
+    `;
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function createParticles(x, y) {
+            for (let i = 0; i < 3; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw(ctx);
+
+                if (particles[i].life <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // Eventos mouse
+        document.addEventListener('mousemove', (e) => {
+            createParticles(e.clientX, e.clientY);
+        });
+
+        // Eventos táctiles (móvil)
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            for (let touch of e.touches) {
+                createParticles(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+
+        // Click/Tap efectos
+        function createBurst(x, y) {
+            for (let i = 0; i < 15; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            createBurst(e.clientX, e.clientY);
+        });
+
+        document.addEventListener('touchstart', (e) => {
+            for (let touch of e.touches) {
+                createBurst(touch.clientX, touch.clientY);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // ================================
+        //  CONFETTI ALEATORIO
+        // ================================
+        function createRandomConfetti() {
+            const confetti = document.createElement('div');
+            confetti.textContent = ['🎉', '🎊', '💖', '⭐', '✨', '🎈'][Math.floor(Math.random() * 6)];
+            confetti.style.cssText = `
+            position: fixed;
+            top: -50px;
+            left: ${Math.random() * 100}%;
+            font-size: ${Math.random() * 20 + 20}px;
+            pointer-events: none;
+            z-index: 9997;
+            animation: confettiFall ${Math.random() * 3 + 3}s linear;
+        `;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 6000);
+        }
+
+        // Agregar animación de caída
+        const style = document.createElement('style');
+        style.textContent = `
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                opacity: 0;
+            }
+        }
+    `;
+        document.head.appendChild(style);
+
+        // Crear confetti cada 2 segundos
+        setInterval(createRandomConfetti, 2000);
+        // ================================
+        //  EVENTO DEL CUMPLE
+        // ================================
+        const EVENT_DATA = {
+            title: 'Cumpleaños Luan y Cris',
+            description: 'Fiesta de cumpleaños en Terraza Esmeralda',
+            location: 'Terraza Esmeralda, Emilio Brun #177, Residencial Esmeralda, Colima',
+            start: '20241217T140000', // 17 dic 2024 – 2:00 PM
+            end: '20241217T200000',   // 17 dic 2024 – 8:00 PM
+            url: 'https://maps.app.goo.gl/AgvymGmpYqZ6rEUo9'
+        };
+
+        // ================================
+        //  MOSTRAR MODAL
+        // ================================
+        function addToCalendar() {
+            const modal = document.createElement('div');
+            modal.id = "calendarModal";
+            modal.style.cssText = `
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -431,8 +623,8 @@
             z-index: 9999;
         `;
 
-        const content = document.createElement('div');
-        content.style.cssText = `
+            const content = document.createElement('div');
+            content.style.cssText = `
             background: white;
             padding: 30px;
             border-radius: 20px;
@@ -443,7 +635,7 @@
             animation: fadeIn .2s ease-out;
         `;
 
-        content.innerHTML = `
+            content.innerHTML = `
             <h3 style="color:#ff1493;font-size:22px;margin-bottom:20px;">
                 Elige tu calendario
             </h3>
@@ -481,63 +673,63 @@
             </div>
         `;
 
-        modal.appendChild(content);
-        document.body.appendChild(modal);
+            modal.appendChild(content);
+            document.body.appendChild(modal);
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeCalendarModal();
-        });
-    }
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeCalendarModal();
+            });
+        }
 
-    function closeCalendarModal() {
-        const modal = document.getElementById("calendarModal");
-        if (modal) modal.remove();
-    }
+        function closeCalendarModal() {
+            const modal = document.getElementById("calendarModal");
+            if (modal) modal.remove();
+        }
 
-    // ================================
-    //  GOOGLE CALENDAR
-    // ================================
-    function generateGoogleCalendarUrl(event) {
-        const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
-        const params = new URLSearchParams({
-            text: event.title,
-            details: event.description,
-            location: event.location,
-            dates: `${event.start}/${event.end}`
-        });
-        return `${baseUrl}&${params.toString()}`;
-    }
+        // ================================
+        //  GOOGLE CALENDAR
+        // ================================
+        function generateGoogleCalendarUrl(event) {
+            const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+            const params = new URLSearchParams({
+                text: event.title,
+                details: event.description,
+                location: event.location,
+                dates: `${event.start}/${event.end}`
+            });
+            return `${baseUrl}&${params.toString()}`;
+        }
 
-    // ================================
-    //  OUTLOOK
-    // ================================
-    function generateOutlookUrl(event) {
-        const baseUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose';
-        const params = new URLSearchParams({
-            subject: event.title,
-            body: event.description,
-            location: event.location,
-            startdt: formatOutlookDate(event.start),
-            enddt: formatOutlookDate(event.end)
-        });
-        return `${baseUrl}&${params.toString()}`;
-    }
+        // ================================
+        //  OUTLOOK
+        // ================================
+        function generateOutlookUrl(event) {
+            const baseUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose';
+            const params = new URLSearchParams({
+                subject: event.title,
+                body: event.description,
+                location: event.location,
+                startdt: formatOutlookDate(event.start),
+                enddt: formatOutlookDate(event.end)
+            });
+            return `${baseUrl}&${params.toString()}`;
+        }
 
-    function formatOutlookDate(dateStr) {
-        const y = dateStr.substring(0,4);
-        const m = dateStr.substring(4,6);
-        const d = dateStr.substring(6,8);
-        const h = dateStr.substring(9,11);
-        const min = dateStr.substring(11,13);
-        return `${y}-${m}-${d}T${h}:${min}:00`;
-    }
+        function formatOutlookDate(dateStr) {
+            const y = dateStr.substring(0, 4);
+            const m = dateStr.substring(4, 6);
+            const d = dateStr.substring(6, 8);
+            const h = dateStr.substring(9, 11);
+            const min = dateStr.substring(11, 13);
+            return `${y}-${m}-${d}T${h}:${min}:00`;
+        }
 
-    // ================================
-    //  APPLE CAL + ANDROID (ICS BLOB)
-    //  *FUNCIONA EN iPHONE*
-    // ================================
-    function downloadICS(event) {
-        const icsContent = `BEGIN:VCALENDAR
+        // ================================
+        //  APPLE CAL + ANDROID (ICS BLOB)
+        //  *FUNCIONA EN iPHONE*
+        // ================================
+        function downloadICS(event) {
+            const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Birthday Invitation//ES
 CALSCALE:GREGORIAN
@@ -555,20 +747,21 @@ SEQUENCE:0
 END:VEVENT
 END:VCALENDAR`.replace(/\n/g, '\r\n');
 
-        const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'cumple-luan-cris.ics';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+            const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
 
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-    }
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'cumple-luan-cris.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => URL.revokeObjectURL(url), 2000);
+        }
     </script>
 
 
 </body>
+
 </html>
